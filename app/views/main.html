@@ -1,0 +1,168 @@
+
+<div class="col-md-6 col-lg-6">
+    <div id="login" ng-init="initialize()">
+        <img src="images/Logo.png" style="max-width: 100%">
+        <!--<h2>-->
+        <!--Family Health Center of Worcester-->
+        <!--</h2>-->
+
+        <fieldset>
+            <div id="control" >
+                <label id="patientAddressLabel" for="patientAddress">1. Patient's Address:</label>
+                <input type="text" id="patientAddress" ng-model="address" placeholder="Enter Here"/>
+                <button id="go" ng-click="calcRoute();">Go</button>
+            </div>
+            <script>
+                $(function(){
+
+                    $("#patientAddress").geocomplete()
+                            .bind("geocode:result", function(event, result){
+                                $.log("Result: " + result.formatted_address);
+                            })
+                            .bind("geocode:error", function(event, status){
+                                $.log("ERROR: " + status);
+                            })
+                            .bind("geocode:multiple", function(event, results){
+                                $.log("Multiple: " + results.length + " results found");
+                            });
+
+                    $("#find").click(function(){
+                        $("#patientAddress").trigger("geocode");
+                    });
+
+
+
+
+                });
+            </script>
+
+            <div class="mt1">
+                <label>2. Choose the day and time:</label>
+
+            </div>
+            <div class="datescheduler" data-ng-repeat="choice in choices">
+                <input type="text" data-field="datetime" ng-model="choice.name" readonly placeholder="Press Here">
+                <button id="Add Dates" ng-show="$first && choices.length !=5" ng-click="addNewChoice()" >Add </button>
+                <button id="Del Dates" ng-show="$last && choices.length !=1" ng-click="delNewChoice()">Del </button>
+                <div id="dtBox"></div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function()
+                    {
+                        $("#dtBox").DateTimePicker();
+                    });
+
+                </script>
+            </div>
+            <div>
+                <div class="mt0">
+                    <label> View:</label>
+                    <select ng-model="selectedChoice"
+                            ng-change ="calcCurrentRoute()"
+                            data-ng-options="p.id for p in choices">
+                    </select>
+
+                </div>
+
+            </div>
+            <div >
+                <label>Choose a criteria to optimize the route on:</label>
+            </div>
+
+            <div class="mt11">
+
+                <button id="Least Time" ng-click="leastTime()">Least Time </button>
+                <button id="Less Waiting" ng-click="leastWaitTime()">Less Waiting </button>
+                <button id="Less Walking" ng-click="leastWalkTime()">Less Walking</button>
+            </div>
+
+            <div class="mt1">
+                <label>3. Ask these questions:</label>
+            </div>
+            <div ng-controller="QuestionsCtrl">
+                <div class="row">
+                    <div class="col-md-8">
+                        <label class="question">Have you ever faced problems / missed appointments due to lack of
+                            transportation?</label>
+                    </div>
+                    <div class="btn-group col-md-4" data-toggle="buttons">
+                        <label class="btn btn-default">
+                            <input type="radio" data-ng-model="question1.value" value="True">
+                            Yes
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" data-ng-model="question1.value" value="false">
+                            No
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <label class="question">Would you use this service again?</label>
+                    </div>
+                    <div class="btn-group col-md-4" data-toggle="buttons" style="text-align: right">
+                        <label class="btn btn-default">
+                            <input type="radio" data-ng-model="question2.value" value="True">
+                            Yes
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" data-ng-model="question2.value" value="false">
+                            No
+                        </label>
+                    </div>
+                </div>
+                <!--<input id="q1yes" class="time" ng-model="question1" name="question1" type="radio" value="yes"/>-->
+                <!--<label for="q1yes" name="question1" class="times">Yes | </label>-->
+                <!--<input id="q1no" ng-model="question1" name="question1" type="radio" value="no" class="time"/>-->
+                <!--<label for="q1no" name="question1" class="times">No</label>-->
+                <!--<br/>-->
+                <!--<label class="question">Would you use this service again?</label>-->
+                <!--<input id="q2yes" ng-model="question2" name="question2" type="radio" value="yes" class="time"/>-->
+                <!--<label for="q2yes" name="question2" class="times">Yes | </label>-->
+                <!--<input id="q2no" ng-model="question2" name="question2" type="radio" value="no" class="time"/>-->
+                <!--<label for="q2no" name="question2" class="times">No</label>-->
+            </div>
+            <div class="col-md-4 col-md-offset-8" style="padding-top: 20px">
+                <button id="submit" ng-click="SubmitForm()">Submit</button>
+            </div>
+
+        </fieldset>
+        <div style="text-align: center">
+            <p>To view all recorded data, please <a
+                    href="https://docs.google.com/spreadsheets/d/18StcOQcXq0qBlPxcTSaGhOZb9Vn1dz-PKe4TsjNrDeI/edit#gid=0"
+                    target="_blank">click here</a>.</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-6" id="directions">
+
+        <p id="details" class="outputClass">
+            <section>
+            <label id="day1Label" ng-show="outputView" >Day 1 least time:</label>
+            <input  type="text" id="day1" size="4" ng-show="outputView">
+                <input type="text" id="day11" size="4" ng-show="outputView"><br/>
+            <label id="day2Label" ng-show="outputView">Day 2 least time:</label>
+            <input type="text" id="day2" size="4"ng-show="outputView">
+                <input type="text" id="day22" size="4"ng-show="outputView"><br/>
+            <label id="day3Label" ng-show="outputView">Day 3 least time:</label>
+            <input type="text" id="day3" size="4" ng-show="outputView">
+                <input type="text" id="day33" size="4" ng-show="outputView"><br/>
+            <label id="day4Label" ng-show="outputView">Day 4 least time:</label>
+            <input type="text" id="day4" size="4" ng-show="outputView">
+                <input type="text" id="day44" size="4" ng-show="outputView"><br/>
+            <label id="day5Label" ng-show="outputView">Day 5 least time:</label>
+            <input type="text" id="day5" size="4" ng-show="outputView">
+                <input type="text" id="day55" size="4" ng-show="outputView"><br/>
+                <label ng-show="outputView">Please select:</label>
+                <input type="text" id="result" size="40" ng-show="outputView">
+            </section>
+        </p>
+    <div id="summary" class="inner" ng-show="directView">
+
+    </div>
+    <div id="directions-panel" class ="inner" ></div>
+</div>
+</body>

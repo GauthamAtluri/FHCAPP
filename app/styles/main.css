@@ -1,0 +1,240 @@
+/* Appointment Timeslots */
+/*.day, .time, .chooseTime {
+    display: none;
+} */
+.day:checked+label, .time:checked+label, .chooseTime:checked+label {
+    color: red;
+}
+
+#patientAddressLabel {
+    display: block;
+    margin-top: 1em;
+}
+
+.adp {
+    background: #fff;
+    border: 1px solid #cdcdcd;
+}
+
+.times {
+    font-weight: normal;
+}
+
+.mt1 {
+    margin-top: 1em;
+}
+
+.question {
+    font-weight: normal;
+}
+/*-------------Main----------------*/
+@charset "utf-8";
+/* CSS Document */
+
+/* ---------- FONTAWESOME ---------- */
+/* ---------- http://fortawesome.github.com/Font-Awesome/ ---------- */
+/* ---------- http://weloveiconfonts.com/ ---------- */
+
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+/* ---------- ERIC MEYER'S RESET CSS ---------- */
+/* ---------- http://meyerweb.com/eric/tools/css/reset/ ---------- */
+
+@import url(http://meyerweb.com/eric/tools/css/reset/reset.css);
+
+/* ---------- FONTAWESOME ---------- */
+
+[class*="fontawesome-"]:before {
+    font-family: 'FontAwesome', sans-serif;
+}
+
+/* ---------- GENERAL ---------- */
+
+body {
+    background-color: #f5ebcf;
+    color: #000;
+    font-family: "Varela Round", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5em;
+}
+
+input, button {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    -webkit-appearance: none;
+}
+
+/* ---------- LOGIN ---------- */
+
+#login {
+    margin: 50px auto;
+    width: 500px;
+    left: auto;
+    right: auto;
+}
+
+#login h2 {
+    background-color: #00aab4;
+    -webkit-border-radius: 20px 20px 0 0;
+    -moz-border-radius: 20px 20px 0 0;
+    border-radius: 20px 20px 0 0;
+    color: #fff;
+    font-size: 28px;
+    padding: 20px 26px;
+    margin-bottom: 0;
+}
+
+#login h2 span[class*="fontawesome-"] {
+    margin-right: 14px;
+}
+
+#login fieldset {
+    background-color: #fff;
+    -webkit-border-radius: 0 0 20px 20px;
+    -moz-border-radius: 0 0 20px 20px;
+    border-radius: 0 0 20px 20px;
+    padding: 20px 26px;
+}
+
+#login fieldset {
+    color: #777;
+    margin-bottom: 14px;
+}
+
+#login fieldset p:last-child {
+    margin-bottom: 0;
+}
+
+
+#login fieldset input, button {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+#login fieldset input[type="text"], #login fieldset input[type="password"] {
+    background-color: #eee;
+    color: #777;
+    padding: 4px 10px;
+
+}
+
+#login fieldset button {
+    background-color: #33cc77;
+    color: #fff;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 4px 0;
+    width: 100px;
+}
+
+#login fieldset button:hover {
+    background-color: #28ad63;
+}
+
+
+
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+    border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+}
+.container-narrow > hr {
+    margin: 30px 0;
+}
+.inner {
+
+    position: absolute;
+    width: 70%;
+}
+
+
+
+.outputClass{
+    width:70%;
+}
+.outer {
+    position: absolute;
+}
+/* Main marketing message and sign up button */
+.jumbotron {
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+    margin: 40px 0;
+}
+.marketing p + h4 {
+    margin-top: 28px;
+}
+#details {
+    text-align: center;
+    font-size: 1.3em;
+    font-family: FontAwesome;
+    letter-spacing: 0.1em;
+    color: black;
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.6);
+    background-color: lemonchiffon;
+
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom: 0;
+    }
+}
+

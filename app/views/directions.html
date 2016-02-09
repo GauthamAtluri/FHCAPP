@@ -1,0 +1,20 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li><a ng-href="#/">Home</a></li>
+    <li class="active"><a ng-href="#/directions">Directions</a></li>
+    <li><a ng-href="#/questions">Questions</a></li>
+  </ul>
+  <h3 class="text-muted">FHC</h3>
+</div>
+<div id="control">
+  <button onclick="initialize();">Initialize</button>
+  <strong>Starting Address:</strong>
+  <input type="text" id="start" />
+  <button onclick="calcRoute();">Go</button>
+</div>
+
+<div id="map-canvas"></div>
+<div id="directions-panel"></div>
+<div class="footer">
+  <p>Infuse</p>
+</div>
